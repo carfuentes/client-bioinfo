@@ -1,0 +1,46 @@
+<p>
+  workflow-form works!
+</p>
+<form (ngSubmit)="submitForm(myForm)" #myForm="ngForm" novalidate>
+  <p> Title
+    <input type="text" name="person" ngModel
+          #myPerson="ngModel" minlength="6" required />
+  </p>
+  <div *ngIf="myPerson.errors && (myPerson.dirty || myPerson.touched)">
+    <p class="error" [hidden]="!myPerson.errors.minlength">
+      Title must be at least 6 characters long.
+    </p>
+     <p class="error" [hidden]="!myPerson.errors.required">
+      Title must be provided.
+    </p>
+  </div>
+ 
+  <p> Languages
+    <select name="languages" ngModel
+          #myLanguage="ngModel" required>
+      <option value="python">Python</option>
+      <option value="matlab">Matlab</option>
+      <option value="r">R</option>
+      <option value="perl">Perl</option>
+  </select>
+
+  </p>
+  <div *ngIf="myLanguage.errors && (myLanguage.dirty || myLanguage.touched)">
+    <p class="error" [hidden]="!myLanguage.errors.minlength">
+      Message must be at least 6 characters long.
+    </p>
+     <p class="error" [hidden]="!myLanguage.errors.required">
+      Message must be provided.
+    </p>
+  </div>
+  <button type="submit" > Contribute </button>
+
+  <select>
+    <!--<optgroup ngFor*= "let root of roots"> 
+      
+    </optgroup> -->
+  </select>
+</form>
+
+
+

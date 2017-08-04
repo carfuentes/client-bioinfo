@@ -1,0 +1,18 @@
+<p>
+  workflow-list works!
+</p>
+
+<div *ngIf="workflowList">
+<ul> 
+  <li *ngFor= "let workflow of workflowList">
+    name: {{ workflow.title }}
+
+    <div *ngIf="userSet">{{workflow.category}}</div> 
+    <div *ngIf="categorySet">{{workflow.creator}}</div>
+
+
+  </li>
+</ul>
+
+  <div *ngIf="userSet" [routerLink]="['/contribute']"> Contribute </div>
+</div>
