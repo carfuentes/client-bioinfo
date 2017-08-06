@@ -1,2 +1,15 @@
 
-<div class=chip *ngFor="let category of categories">{{category.name}} </div>
+<ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
+  <li *ngFor="let category of categories">
+    <div class="collapsible-header header">{{category.name}} </div>
+    <div class="collapsible-body">
+      <div *ngFor="let workflow of category.workflows" class="title"> {{workflow.title}}
+        <span class="chip">
+          <img src="../../../assets/images/user.png" alt="Contact Person">Username 
+      </span>
+      </div>
+      
+        
+    </div>
+</li>
+</ul>
