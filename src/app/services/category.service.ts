@@ -11,7 +11,7 @@ import { SessionService } from './session.service';
 @Injectable()
 export class CategoryService {
   
-  BASE_URL: string = 'http://localhost:3000/api/categories';
+  BASE_URL: string = 'http://localhost:3000/api';
 
   constructor(private http: Http, private session: SessionService) {}
   
@@ -26,8 +26,14 @@ export class CategoryService {
   }
 
    getTreeCategories() {
-    return this.http.get(`${this.BASE_URL}`, this.requestOptions())
-                    .map(res => res.json)
+    return this.http.get(`${this.BASE_URL}/categories`, this.requestOptions())
+                    .map(res => res.json())
+                    .catch(this.handleError)
+  }
+
+  getAdminCategories() {
+    return this.http.get(`${this.BASE_URL}/admin/categories`, this.requestOptions())
+                    .map(res => res.json())
                     .catch(this.handleError)
   }
 

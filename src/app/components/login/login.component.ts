@@ -9,10 +9,7 @@ import { SessionService } from '../../services/session.service';
 })
 export class LoginComponent implements OnInit {
   
-  user: Object = {
-		username: '',
-		password: '',
-  }
+  user: Object={}
   
   error = null;
 
@@ -24,8 +21,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login() {
-    this.session.login(this.user).subscribe(
+  submitForm(myForm) {
+    this.session.login({username:myForm.value.username, password:myForm.value.password}).subscribe(
       (data) => {
         this.router.navigate(['/profile']);
       },

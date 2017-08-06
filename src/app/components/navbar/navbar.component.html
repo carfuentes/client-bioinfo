@@ -1,0 +1,21 @@
+<nav>
+    <div class="nav-wrapper grey lighten-2">
+      <a href="#" class="brand-logo right logo"> <i class="material-icons"><img src="../../../assets/images/biology.png" alt=""></i>Bioinfo</a>
+      <ul *ngIf="this.session.isAuthenticated" id="nav-mobile" class="left hide-on-med-and-down">
+        <li>
+                <span class="hi">Hi {{ this.session.user.username }} !</span>
+                
+        </li>
+        <li><a [routerLink]="['/profile']">Profile</a></li>
+        <li><a [routerLink]="['/contribute']">Contribute</a></li>
+        <li><a (click)="logout()">Logout</a></li>
+      </ul>
+
+      <ul *ngIf="!this.session.isAuthenticated" id="nav-mobile" class="left hide-on-med-and-down">  
+        <li><a [routerLink]="['/login']">Login</a></li>
+        <li><a [routerLink]="['/signup']">Sign up</a></li>
+      </ul>
+    </div>
+  </nav>
+        
+        

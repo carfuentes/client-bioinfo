@@ -25,8 +25,14 @@ export class WorkflowService {
     return Observable.throw(e.json().message);
   }
 
-  getUserWorkFlows() {
-    return this.http.get(`${this.BASE_URL}/workflows`, this.requestOptions())
+  getUserApprovedWorkFlows() {
+    return this.http.get(`${this.BASE_URL}/workflows/approved`, this.requestOptions())
+                    .map(res => res.json())
+                    .catch(this.handleError)
+  }
+
+  getUserNotApprovedWorkFlows() {
+    return this.http.get(`${this.BASE_URL}/workflows/notapproved`, this.requestOptions())
                     .map(res => res.json())
                     .catch(this.handleError)
   }
@@ -39,7 +45,7 @@ export class WorkflowService {
 
   createAWorkflow(body) {
     return this.http.post(`${this.BASE_URL}/workflows`, body, this.requestOptions())
-                    .map(res => res.json)
+                    .map(res => res.json())
                     .catch(this.handleError)
   }
 

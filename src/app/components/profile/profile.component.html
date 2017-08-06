@@ -1,7 +1,42 @@
-<p>
-  profile works!
-</p>
 
-Username: {{user.username}}
 
-Workflows: <app-workflow-list [userSet]="true" ></app-workflow-list>
+
+<h2> My profile </h2>
+<div class="row">
+ <div class="card col s6">
+    <div class="card-image">
+          <img src="../../../assets/images/user.png">
+          <span class="card-title">My profile</span>
+          
+         
+          
+        </div>
+    <div class="card-content">
+      <p>{{user.name}}</p>
+    </div>
+    <div class="card-tabs">
+      <ul class="tabs tabs-fixed-width"  materialize="tabs">
+        <li class="tab"><a [routerLink]="['/profile']" fragment="workflows">My workflows</a></li>
+        <li class="tab"><a [routerLink]="['/profile']" fragment="social">My social links</a></li>
+        <li *ngIf="isAdmin" class="tab"><a [routerLink]="['/profile']" fragment="admin-dashboard">Admin</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+
+<div class="col s6">
+      <div id="social">
+        <ul>
+          <li> <a href="https://github.com/{{user.links.github}}"> {{user.links.github}}</a> </li>
+          <li> <a href="https://github.com/{{user.links.twitter}}"> {{user.links.twitter}}</a> </li>
+        </ul>
+      </div>
+    
+      <div *ngIf="isAdmin" id="admin-dashboard"> <app-admin-dashboard></app-admin-dashboard></div>
+      <div id="workflows"> <app-workflow-list></app-workflow-list> </div>
+    </div>
+
+</div>
+
+

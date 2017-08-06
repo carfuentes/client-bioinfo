@@ -1,46 +1,63 @@
-<p>
-  workflow-form works!
-</p>
-<form (ngSubmit)="submitForm(myForm)" #myForm="ngForm" novalidate>
-  <p> Title
-    <input type="text" name="person" ngModel
-          #myPerson="ngModel" minlength="6" required />
-  </p>
-  <div *ngIf="myPerson.errors && (myPerson.dirty || myPerson.touched)">
-    <p class="error" [hidden]="!myPerson.errors.minlength">
-      Title must be at least 6 characters long.
-    </p>
-     <p class="error" [hidden]="!myPerson.errors.required">
-      Title must be provided.
-    </p>
-  </div>
- 
-  <p> Languages
-    <select name="languages" ngModel
-          #myLanguage="ngModel" required>
-      <option value="python">Python</option>
-      <option value="matlab">Matlab</option>
-      <option value="r">R</option>
-      <option value="perl">Perl</option>
-  </select>
 
-  </p>
-  <div *ngIf="myLanguage.errors && (myLanguage.dirty || myLanguage.touched)">
-    <p class="error" [hidden]="!myLanguage.errors.minlength">
-      Message must be at least 6 characters long.
-    </p>
-     <p class="error" [hidden]="!myLanguage.errors.required">
-      Message must be provided.
-    </p>
-  </div>
-  <button type="submit" > Contribute </button>
+<h2>Form</h2>
 
-  <select>
-    <!--<optgroup ngFor*= "let root of roots"> 
+  <div class="row">
+    <form class="col s12" (ngSubmit)="submitForm(myForm)" #myForm="ngForm" novalidate>
+      <div class="row">
+        <div class="input-field col s6">
+          <input  id="title" type="text" class="validate" ngModel name="title">
+          <label for="title">Title</label>
+        </div>
+      </div>
+     
+    <div class="row">
+      <div class="file-field input-field col s6">
+          <div class="btn">
+          <span>File</span>
+          <input type="file" ngModel name="file">
+          </div>
+          <div class="file-path-wrapper">
+          <input class="file-path validate" type="text"  ng2FileSelect [uploader]="uploader" >
+      </div>
+    </div>
+    
+    </div>
+        
+        <div class="input-field col s6">
+          <select materialize="material_select" name="languages" ngModel>
+            <option value="" disabled selected>Languages</option>
+            <option value="Python">Python</option>
+            <option value="Matlan">Matlab</option>
+            <option value="R">R</option>
+          </select>
+          <label>Languages</label>
+        </div>
+
+        <div class="input-field col s6">
+          <select materialize="material_select" name="category" ngModel>
+            <option value="" disabled selected>Category</option>
+            <option value="RNA-seq">RNA-seq</option>
+            <option value="SNP-microarray">SNP-microarray</option>
+            <option value="Gene-expression-microarray">Gene-expression-microarray</option>
+            <option value="Gene-networks">Gene-networks</option>
+
+          </select>
+          <label>Category</label>
+        </div>
       
-    </optgroup> -->
-  </select>
-</form>
+      <div *ngIf="error">
+          {{ error }}
+      </div>
+
+       <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+    <i class="material-icons right">send</i>
+          </button>
+      
+    </form>
+    </div>
+  
+ 
+
 
 
 

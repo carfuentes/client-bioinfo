@@ -1,18 +1,27 @@
-<p>
-  workflow-list works!
-</p>
-
-<div *ngIf="workflowList">
-<ul> 
-  <li *ngFor= "let workflow of workflowList">
-    name: {{ workflow.title }}
-
-    <div *ngIf="userSet">{{workflow.category}}</div> 
-    <div *ngIf="categorySet">{{workflow.creator}}</div>
 
 
+<h5>My workflows</h5>
+
+<div *ngIf="workflowApproved">
+<div class= "header"> Approved <i class="material-icons" style="color:chartreuse">check_circle</i> </div>
+<ul > 
+  <li *ngFor= "let workflow of workflowApproved">
+    <span class="title">{{workflow.title}} </span>
+    <span class="chip" >{{workflow.category}}</span> 
   </li>
 </ul>
-
-  <div *ngIf="userSet" [routerLink]="['/contribute']"> Contribute </div>
 </div>
+
+<div *ngIf="workflowNotApproved">
+<div class= "header">In course <i class="material-icons" style="color:orange">access_time</i> </div>
+<ul > 
+  <li *ngFor= "let workflow of workflowNotApproved">
+    <span class="title">{{workflow.title}} </span>
+    <span  class="chip" >{{workflow.category}}</span> 
+  </li>
+</ul>
+</div>
+
+<a materialize="tooltip" [materializeParams]="tooltips" data-position="bottom" data-delay="50" data-tooltip="Contribute" class="btn-floating  waves-effect waves-light red tooltipped" [routerLink]="['/contribute']"><i class="material-icons">add</i></a>
+
+

@@ -1,18 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
+<app-navbar></app-navbar>
+<div class="row">
+
+      <div class="col s3">
+        <!-- Grey navigation panel -->
+      </div>
+
+      <div class="col s9">
+        <router-outlet></router-outlet>
+      </div>
+
 </div>
+          
 
-<p *ngIf="this.session.isAuthenticated">
-  You're signed in as: {{ this.session.user.username }} | 
-  <a class='logout' (click)="logout()">Logout</a>
-</p>
-
-<p *ngIf="!this.session.isAuthenticated">
-  <a [routerLink]="['/login']">Login</a>
-</p>
-
-<router-outlet></router-outlet>
 

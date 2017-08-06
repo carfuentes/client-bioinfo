@@ -1,18 +1,34 @@
+
+
+
 <h2>Login</h2>
 
-<form>
-  <div *ngIf="error">
-    {{ error }}
+  <div class="row">
+    <form class="col s12" (ngSubmit)="submitForm(myForm)" #myForm="ngForm" novalidate>
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="Username" id="username" type="text" class="validate" ngModel name="username">
+          <label for="username">Username</label>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="password" type="password" class="validate" ngModel name="password">
+          <label for="password">Password</label>
+        </div>
+      </div>
+      
+      
+    
+      <div *ngIf="error">
+          {{ error }}
+      </div>
+     <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+    <i class="material-icons right">send</i>
+          </button>
+    </form>
   </div>
-  <p>
-    <label for="username">Username</label>
-    <input type="text" [(ngModel)]="user.username" name="username">
-  </p>
 
-  <p>
-    <label for="password">Password</label>
-    <input type="text" [(ngModel)]="user.password" name="password">
-  </p>
 
-  <button (click)="login()">Login</button>
-</form>
+ 

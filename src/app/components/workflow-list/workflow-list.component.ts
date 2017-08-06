@@ -10,25 +10,23 @@ import { WorkflowService } from '../../services/workflow.service';
   providers:[WorkflowService]
 })
 export class WorkflowListComponent implements OnInit {
-  @Input() userSet:boolean=false;
-  @Input() categorySet:boolean=false;
-
   
-  workflowList; 
+  workflowApproved; 
+  workflowNotApproved;
 
   constructor(private workflow: WorkflowService ) { }
 
   ngOnInit() {
 
-    if (this.userSet) {
-      this.workflow.getUserWorkFlows().subscribe((workflows) => {
-        this.workflowList = workflows;
-        console.log(this.workflowList)
+      this.workflow.getUserApprovedWorkFlows().subscribe((workflows) => {
+        this.workflowApproved = workflows;
+        console.log(this.workflowApproved)
       });
 
-    } else if (this.categorySet) {
-
-    }
+      this.workflow.getUserNotApprovedWorkFlows().subscribe((workflows) => {
+        this.workflowNotApproved = workflows;
+        console.log(this.workflowNotApproved)
+      });
 
   }
 
