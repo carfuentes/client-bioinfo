@@ -19,6 +19,8 @@ import {SessionService} from './services/session.service'
 import {CategoryService} from './services/category.service'
 import { WorkflowService } from './services/workflow.service';
 import { CommentService } from './services/comment.service';
+import { UserInfoService } from './services/user-info.service';
+
 
 import { AppComponent } from './app.component';
 import { CategoriesComponent } from './components/categories/categories.component';
@@ -66,7 +68,7 @@ import { CommentFormComponent } from './components/comment-form/comment-form.com
     DropdownTreeviewModule.forRoot(),
     MaterializeModule,
   ],
-  providers: [SessionService, CategoryService, WorkflowService, CommentService],
+  providers: [SessionService, CategoryService, WorkflowService, CommentService, UserInfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

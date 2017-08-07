@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges  } from '@angular/core';
 
-import {ActivatedRoute} from "@angular/router"
+import {ActivatedRoute, Router} from "@angular/router"
 
 
 import { CommentService } from '../../services/comment.service'
@@ -15,7 +15,12 @@ export class CommentListComponent implements OnInit {
   @Input() newComment={};
 
   commentList;
-  constructor(private session: SessionService, private comment: CommentService, private route: ActivatedRoute) { }
+  constructor(
+    private session: SessionService, 
+    private comment: CommentService, 
+    private route: ActivatedRoute,
+    private router: Router,
+    ) { }
   
   ngOnInit() {
     this.getComments()
@@ -32,6 +37,11 @@ export class CommentListComponent implements OnInit {
         this.commentList=json;
       });
     });
+
+  }
+
+  goToUserProfile(id) {
+    this.router.navigate(['/user', id ]);
 
   }
 

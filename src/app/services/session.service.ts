@@ -29,7 +29,7 @@ export class SessionService implements CanActivate {
       let headers = new Headers({ 'Authorization': `JWT ${token}` });
       let options = new RequestOptions({ headers: headers });
 
-      return this.http.get(`${this.BASE_URL}/profile`, options)
+      return this.http.get(`${this.BASE_URL}/api/profile`, options)
         .map((data) => {
           if (data) {
             this.isAuthenticated = true;

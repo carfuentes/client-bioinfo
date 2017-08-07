@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { SessionService } from '../../services/session.service';
+import { UserInfoService } from '../../services/user-info.service';
 import {MaterializeDirective} from "angular2-materialize";
 
 @Component({
@@ -11,16 +12,31 @@ import {MaterializeDirective} from "angular2-materialize";
 export class ProfileComponent implements OnInit {
 
   user;
-  isAdmin:boolean;
+  isProfile:boolean;
 
-  constructor(private router: Router,private session:SessionService) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private session:SessionService,
+    private userInfo:UserInfoService) { }
 
   ngOnInit() {
-    this.user= this.session.user;
-    this.isAdmin=this.user.role==="admin";
-    console.log(this.isAdmin)
+    if (this.route.snapshot.url[0].path ==="user") {
+      console.log("in")
+       this.route.params.subscribe((params)=> {
+          this.userInfo.getUserProfile(String(params["id"])).subscribe((json)=> {
+              this.user=json
+              this.isProfile=false;
+          });
+       });
+    } else {
+         this.user= this.session.user;
+         this.isProfile=true;
+    }
     
   }
+
+
 
 
 }

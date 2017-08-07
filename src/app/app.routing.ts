@@ -17,6 +17,7 @@ export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: "home", component: HomeComponent},
   { path: 'profile', component: ProfileComponent, canActivate:[SessionService]},
+  { path: 'user/:id', component: ProfileComponent, canActivate:[SessionService]},
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'contribute', component: WorkflowFormComponent, canActivate:[SessionService]},
