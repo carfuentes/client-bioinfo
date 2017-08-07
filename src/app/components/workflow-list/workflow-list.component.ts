@@ -7,32 +7,35 @@ import { WorkflowService } from '../../services/workflow.service';
   selector: 'app-workflow-list',
   templateUrl: './workflow-list.component.html',
   styleUrls: ['./workflow-list.component.css'],
-  providers:[WorkflowService]
 })
 export class WorkflowListComponent implements OnInit {
+  @Input() approved:boolean=true;
   
-  workflowApproved; 
-  workflowNotApproved;
+  workflowList; 
 
-  constructor(private workflow: WorkflowService ) { }
+  constructor(private workflow: WorkflowService, private route: Router ) { }
 
   ngOnInit() {
 
+    if (this.approved) {
+
       this.workflow.getUserApprovedWorkFlows().subscribe((workflows) => {
-        this.workflowApproved = workflows;
-        console.log(this.workflowApproved)
+        this.workflowList = workflows;
+      
       });
+    } else {
 
       this.workflow.getUserNotApprovedWorkFlows().subscribe((workflows) => {
-        this.workflowNotApproved = workflows;
-        console.log(this.workflowNotApproved)
+        this.workflowList = workflows;
+       
       });
+    }
 
   }
 
-  // contribute() {
-  //    this.route.navigate
+  getDetails(id) {
+     this.route.navigate(["/workflows", id])
     
-  // }
+  }
 
 }

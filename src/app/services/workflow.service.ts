@@ -25,6 +25,13 @@ export class WorkflowService {
     return Observable.throw(e.json().message);
   }
 
+  getSingleWorkflow(id) {
+    return this.http.get(`${this.BASE_URL}/workflows/${id}`, this.requestOptions())
+    .map((response)=>  {
+      return  response.json()
+    })
+  }
+
   getUserApprovedWorkFlows() {
     return this.http.get(`${this.BASE_URL}/workflows/approved`, this.requestOptions())
                     .map(res => res.json())

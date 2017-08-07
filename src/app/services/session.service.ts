@@ -36,6 +36,7 @@ export class SessionService implements CanActivate {
             this.token = token;
             return true;
           }
+          this.router.navigate(['/login']);
           return false;
         })
         .catch(this.handleError);

@@ -1,27 +1,15 @@
 
 
-<h5>My workflows</h5>
-
-<div *ngIf="workflowApproved">
-<div class= "header"> Approved <i class="material-icons" style="color:chartreuse">check_circle</i> </div>
-<ul > 
-  <li *ngFor= "let workflow of workflowApproved">
-    <span class="title">{{workflow.title}} </span>
+<div>
+<ul *ngIf="workflowList"> 
+  <li *ngFor= "let workflow of workflowList">
+    <span (click)= "getDetails(workflow._id)" class="title">{{workflow.title}} </span>
     <span class="chip" >{{workflow.category}}</span> 
   </li>
 </ul>
 </div>
 
-<div *ngIf="workflowNotApproved">
-<div class= "header">In course <i class="material-icons" style="color:orange">access_time</i> </div>
-<ul > 
-  <li *ngFor= "let workflow of workflowNotApproved">
-    <span class="title">{{workflow.title}} </span>
-    <span  class="chip" >{{workflow.category}}</span> 
-  </li>
-</ul>
-</div>
 
-<a materialize="tooltip" [materializeParams]="tooltips" data-position="bottom" data-delay="50" data-tooltip="Contribute" class="btn-floating  waves-effect waves-light red tooltipped" [routerLink]="['/contribute']"><i class="material-icons">add</i></a>
+
 
 

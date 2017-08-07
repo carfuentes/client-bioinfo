@@ -1,3 +1,31 @@
-<p>
-  workflow-detail works!
-</p>
+
+<div *ngIf="workflow" class="card">
+
+ <div class="header">Title: </div>
+ <div class="title">{{workflow.title}} </div>
+
+<div class="header">Category:</div>
+<div class="chip">{{workflow.category}} </div>
+
+<div class="header">Snippet:</div>
+
+
+<ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
+  <li>
+    <div class="collapsible-header header">Comment </div>
+    <div class="collapsible-body">
+    <app-comment-list [newComment]= "newComment"></app-comment-list>
+    </div>
+</li>
+</ul>
+
+<ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
+  <li>
+    <div class="collapsible-header header"><i class="material-icons">message</i></div>
+    <div class="collapsible-body">
+    <app-comment-form (commentsUpdated)="handleCommentUpdated($event)"></app-comment-form>
+    </div>
+</li>
+</ul>
+
+   </div>

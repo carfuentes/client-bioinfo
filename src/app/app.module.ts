@@ -17,6 +17,8 @@ import { routes } from './app.routing';
 
 import {SessionService} from './services/session.service'
 import {CategoryService} from './services/category.service'
+import { WorkflowService } from './services/workflow.service';
+import { CommentService } from './services/comment.service';
 
 import { AppComponent } from './app.component';
 import { CategoriesComponent } from './components/categories/categories.component';
@@ -30,6 +32,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { UserCardComponent } from './components/user-card/user-card.component';
+import { WorkflowDisplayComponent } from './components/workflow-display/workflow-display.component';
+import { CommentListComponent } from './components/comment-list/comment-list.component';
+import { CommentFormComponent } from './components/comment-form/comment-form.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +50,11 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
     HomeComponent,
     SignupComponent,
     FileSelectDirective,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    UserCardComponent,
+    WorkflowDisplayComponent,
+    CommentListComponent,
+    CommentFormComponent
     
   ],
   imports: [
@@ -56,7 +66,7 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
     DropdownTreeviewModule.forRoot(),
     MaterializeModule,
   ],
-  providers: [SessionService, CategoryService],
+  providers: [SessionService, CategoryService, WorkflowService, CommentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

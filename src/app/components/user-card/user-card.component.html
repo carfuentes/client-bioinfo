@@ -1,0 +1,47 @@
+
+  <div class=card> 
+ 
+    <div class="card-image">
+          <img src="../../../assets/images/user.png">
+          <span class="card-title">{{user.username}}</span>
+          
+         
+          
+        </div>
+    <div class="card-content">
+      <p>{{user.name}}</p>
+    </div>
+    <div class="card-tabs">
+      <ul class="tabs tabs-fixed-width"  materialize="tabs">
+        <li class="tab"><a [routerLink]="['/profile']" fragment="workflows">workflows</a></li>
+        <li class="tab"><a [routerLink]="['/profile']" fragment="social">social</a></li>
+        <!--<li *ngIf="isAdmin" class="tab"><a [routerLink]="['/profile']" fragment="admin-dashboard">Admin</a></li>-->
+      </ul>
+    </div>
+
+
+
+
+<div class="card-content grey lighten-4">
+      <div id="social">
+        <ul>
+          <li> <a href="https://github.com/{{user.links.github}}"> {{user.links.github}}</a> </li>
+          <li> <a href="https://github.com/{{user.links.twitter}}"> {{user.links.twitter}}</a> </li>
+        </ul>
+      </div>
+    
+      <!--<div *ngIf="isAdmin" id="admin-dashboard"> <app-admin-dashboard></app-admin-dashboard></div>-->
+      <div id="workflows"> 
+        <div class= "header"> Approved <i class="material-icons" style="color:chartreuse">check_circle</i> </div>
+        <app-workflow-list [approved]="true"></app-workflow-list> 
+
+      <div *ngIf="isProfile">
+        <div class= "header">In course <i class="material-icons" style="color:orange">access_time</i> </div>
+        <app-workflow-list [approved]="false"></app-workflow-list> 
+        <a materialize="tooltip" [materializeParams]="tooltips" data-position="bottom" data-delay="50" data-tooltip="Contribute" class="btn-floating  waves-effect waves-light red tooltipped" [routerLink]="['/contribute']"><i class="material-icons">add</i></a>
+      </div>
+    </div>
+
+</div>
+</div>
+    

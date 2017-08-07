@@ -1,0 +1,33 @@
+<div class="row">
+
+  <div class="col s2">
+   <img width="50px"src="https://s-media-cache-ak0.pinimg.com/736x/0a/8b/91/0a8b91f0bfbbcbc65fb7d43cd9ff4c78--grey-bunny-cutest-bunnies.jpg" alt="" class="circle">
+      <span class="title">{{user.username}}</span>
+      <p>{{user.role}}</p>
+  </div>
+
+    <form class="col s10" (ngSubmit)="submitForm(myForm)" #myForm="ngForm" novalidate>
+      <div class="row">
+        <div class="input-field">
+          <input placeholder="Title" id="title" type="text" class="validate" ngModel name="title">
+          <label for="title">Title</label>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="input-field">
+          <textarea class="materialize-textarea" id="text" materialize="characterCounter" length="20"  class="validate" ngModel name="text"></textarea>
+          <label for="text">Content</label>
+        </div>
+      </div>
+      
+      
+    
+      <div *ngIf="error">
+          {{ error }}
+      </div>
+     <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+    <i class="material-icons right">send</i>
+          </button>
+    </form>
+  </div>

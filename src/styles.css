@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+.title {
+    font-weight: bolder;
+    color: #26A69A;
+    cursor:pointer;
+
+}
+
+.header {
+    font-weight: bolder;
+    font-size: 1.2rem;
+
+}

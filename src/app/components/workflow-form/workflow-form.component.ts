@@ -9,7 +9,6 @@ import { SessionService } from '../../services/session.service';
   selector: 'app-workflow-form',
   templateUrl: './workflow-form.component.html',
   styleUrls: ['./workflow-form.component.css'],
-  providers: [WorkflowService, CategoryService]
 })
 export class WorkflowFormComponent implements OnInit {
 

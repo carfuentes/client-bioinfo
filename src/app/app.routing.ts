@@ -8,6 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { WorkflowFormComponent } from './components/workflow-form/workflow-form.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { WorkflowDisplayComponent } from './components/workflow-display/workflow-display.component';
 
 import { SessionService } from './services/session.service';
 
@@ -18,5 +19,6 @@ export const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate:[SessionService]},
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'contribute', component: WorkflowFormComponent, canActivate:[SessionService]}
+  { path: 'contribute', component: WorkflowFormComponent, canActivate:[SessionService]},
+  { path: 'workflows/:id', component: WorkflowDisplayComponent,canActivate:[SessionService] }
 ];
