@@ -33,11 +33,11 @@
       <!--<div *ngIf="isAdmin" id="admin-dashboard"> <app-admin-dashboard></app-admin-dashboard></div>-->
       <div id="workflows"> 
         <div class= "header"> Approved <i class="material-icons" style="color:chartreuse">check_circle</i> </div>
-        <app-workflow-list [approved]="true"></app-workflow-list> 
+        <app-workflow-list [user]= "user" [approved]="true"></app-workflow-list> 
 
       <div *ngIf="isProfile">
         <div class= "header">In course <i class="material-icons" style="color:orange">access_time</i> </div>
-        <app-workflow-list [approved]="false"></app-workflow-list> 
+        <app-workflow-list [user]= "user" [approved]="false"></app-workflow-list> 
         <a materialize="tooltip" [materializeParams]="tooltips" data-position="bottom" data-delay="50" data-tooltip="Contribute" class="btn-floating  waves-effect waves-light red tooltipped" [routerLink]="['/contribute']"><i class="material-icons">add</i></a>
       </div>
     </div>

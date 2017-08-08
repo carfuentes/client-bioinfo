@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { WorkflowService } from '../../services/workflow.service';
+import { CategoryService } from '../../services/category.service';
 
 
 @Component({
@@ -10,27 +11,47 @@ import { WorkflowService } from '../../services/workflow.service';
 })
 export class WorkflowListComponent implements OnInit {
   @Input() approved:boolean=true;
+  @Input() user;
+  @Input() catname;
+  
   
   workflowList; 
 
-  constructor(private workflow: WorkflowService, private route: Router ) { }
+  constructor(private workflow: WorkflowService, private route: Router, private category: CategoryService ) { }
 
   ngOnInit() {
 
-    if (this.approved) {
+    if (this.approved && this.user) {
 
-      this.workflow.getUserApprovedWorkFlows().subscribe((workflows) => {
+      this.workflow.getUserApprovedWorkFlows(this.user._id).subscribe((workflows) => {
         this.workflowList = workflows;
       
       });
-    } else {
+    } else if(!this.approved && this.user) {
 
-      this.workflow.getUserNotApprovedWorkFlows().subscribe((workflows) => {
+      this.workflow.getUserNotApprovedWorkFlows(this.user._id).subscribe((workflows) => {
         this.workflowList = workflows;
        
       });
+    } else if(this.catname) {
+     this.getCategory(this.catname)
+     
     }
 
+  }
+
+  ngOnChanges(changes) {
+    if(changes.catname) {
+    this.catname=changes.catname.currentValue;
+    this.getCategory(this.catname)
+    }
+  }
+
+  getCategory(catname) {
+    this.category.getWorkflowsCategories(catname).subscribe((workflows)=> {
+        this.workflowList=workflows;
+        console.log(workflows);
+      })
   }
 
   getDetails(id) {

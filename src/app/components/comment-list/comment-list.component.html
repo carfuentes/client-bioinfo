@@ -1,6 +1,6 @@
 <ul *ngFor= "let comment of commentList">
   <img width="50px"src="https://s-media-cache-ak0.pinimg.com/736x/0a/8b/91/0a8b91f0bfbbcbc65fb7d43cd9ff4c78--grey-bunny-cutest-bunnies.jpg" alt="" class="circle">
-      <span class="title" (click)="goToUserProfile(comment.creator)">{{comment.creator}}</span>
+      <span class="title" (click)="goToUserProfile(comment.creator.id)">{{comment.creator.username}}</span>
      
 
   <li> {{comment.title}} - {{comment.created_at}}</li>

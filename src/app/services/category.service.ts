@@ -11,7 +11,7 @@ import { SessionService } from './session.service';
 @Injectable()
 export class CategoryService {
   
-  BASE_URL: string = 'http://localhost:3000/api';
+  BASE_URL: string = 'http://localhost:3000';
 
   constructor(private http: Http, private session: SessionService) {}
   
@@ -26,7 +26,13 @@ export class CategoryService {
   }
 
    getTreeCategories() {
-    return this.http.get(`${this.BASE_URL}/categories`, this.requestOptions())
+    return this.http.get(`${this.BASE_URL}/categories`)
+                    .map(res => res.json())
+                    .catch(this.handleError)
+  }
+
+  getWorkflowsCategories(catname) {
+    return this.http.get(`${this.BASE_URL}/categories/${catname}/workflows`)
                     .map(res => res.json())
                     .catch(this.handleError)
   }

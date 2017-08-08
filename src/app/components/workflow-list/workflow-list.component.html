@@ -4,7 +4,9 @@
 <ul *ngIf="workflowList"> 
   <li *ngFor= "let workflow of workflowList">
     <span (click)= "getDetails(workflow._id)" class="title">{{workflow.title}} </span>
-    <span class="chip" >{{workflow.category}}</span> 
+    <span *ngIf="user; else userAvatar" class="chip" >{{workflow.category}}</span> 
+    <ng-template class="chip" #userAvatar >{{workflow.creator.id}}</ng-template>
+   
   </li>
 </ul>
 </div>

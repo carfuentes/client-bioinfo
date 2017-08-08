@@ -5,7 +5,7 @@
     <div class="collapsible-body">
       <div *ngFor="let workflow of category.workflows" class="title"> {{workflow.title}}
         <span class="chip">
-          <img src="../../../assets/images/user.png" alt="Contact Person">Username 
+          <img src="../../../assets/images/user.png" alt="Contact Person">{{workflow.creator.username}}
       </span>
       </div>
       

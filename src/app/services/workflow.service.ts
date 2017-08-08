@@ -32,14 +32,14 @@ export class WorkflowService {
     })
   }
 
-  getUserApprovedWorkFlows() {
-    return this.http.get(`${this.BASE_URL}/workflows/approved`, this.requestOptions())
+  getUserApprovedWorkFlows(id) {
+    return this.http.get(`${this.BASE_URL}/workflows/user/${id}/approved`, this.requestOptions())
                     .map(res => res.json())
                     .catch(this.handleError)
   }
 
-  getUserNotApprovedWorkFlows() {
-    return this.http.get(`${this.BASE_URL}/workflows/notapproved`, this.requestOptions())
+  getUserNotApprovedWorkFlows(id) {
+    return this.http.get(`${this.BASE_URL}/workflows/user/${id}/notapproved`, this.requestOptions())
                     .map(res => res.json())
                     .catch(this.handleError)
   }

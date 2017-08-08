@@ -1,12 +1,22 @@
 
-<div class="row">
+<div *ngIf= "isDetail"class="row">
 
       <div class="col s3">
-      <app-user-card *ngIf="creator" [user]="creator" [isProfile]="false"></app-user-card>
+      <app-user-card *ngIf="creator" [user]="creator.id" [isProfile]="false"></app-user-card>
       </div>
 
       <div class="col s9">
       <app-workflow-detail [workflow]="workflow"></app-workflow-detail>
+      </div>
+      
+
+</div>
+
+<div *ngIf= "isCategory" class="row">
+
+
+      <div class="col s9">
+      <app-workflow-list [catname]="catname"  ></app-workflow-list>
       </div>
       
 

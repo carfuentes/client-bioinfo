@@ -9,3 +9,22 @@
     font-size: 1.2rem;
 
 }
+
+
+.main-nav {
+    /*position: fixed;*/
+    top: 64px;
+    bottom: 0;
+    
+    padding: 20px 4px;
+    height: 100%;
+}
+
+/*
+#component-data {
+    position:absolute;
+    left: 350px;
+    height: 100%;
+    width: 100%;
+}*/
+

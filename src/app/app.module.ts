@@ -15,8 +15,8 @@ import { FileSelectDirective } from "ng2-file-upload";
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routing';
 
-import {SessionService} from './services/session.service'
-import {CategoryService} from './services/category.service'
+import { SessionService } from './services/session.service'
+import { CategoryService } from './services/category.service'
 import { WorkflowService } from './services/workflow.service';
 import { CommentService } from './services/comment.service';
 import { UserInfoService } from './services/user-info.service';
@@ -38,6 +38,7 @@ import { UserCardComponent } from './components/user-card/user-card.component';
 import { WorkflowDisplayComponent } from './components/workflow-display/workflow-display.component';
 import { CommentListComponent } from './components/comment-list/comment-list.component';
 import { CommentFormComponent } from './components/comment-form/comment-form.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { CommentFormComponent } from './components/comment-form/comment-form.com
     UserCardComponent,
     WorkflowDisplayComponent,
     CommentListComponent,
-    CommentFormComponent
+    CommentFormComponent,
+    SidebarComponent
     
   ],
   imports: [

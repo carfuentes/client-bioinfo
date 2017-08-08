@@ -1,0 +1,44 @@
+import { Component, OnInit } from '@angular/core';
+import { TREE_ACTIONS, KEYS, IActionMapping, ITreeOptions } from 'angular-tree-component';
+
+import { Router } from "@angular/router";
+
+import { CategoryService } from '../../services/category.service'
+
+@Component({
+  selector: 'app-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.css']
+})
+export class SidebarComponent implements OnInit {
+
+  nodes;
+  
+
+
+  constructor(private category: CategoryService, private router: Router) { }
+
+  options:  ITreeOptions = {
+    actionMapping: {
+      mouse: {
+        dblClick: (tree, node, $event) => {
+          if (node.hasChildren) TREE_ACTIONS.TOGGLE_EXPANDED(tree, node, $event);
+        },
+        click: (tree, node, $event) => {
+          if(!node.hasChildren) {
+            this.router.navigate(["/categories", node.data.element.name ,"workflows"])
+          };
+        }
+      }
+    },
+  }
+
+  ngOnInit() {
+    this.category.getTreeCategories().subscribe(json=> {
+      this.nodes=json;
+    })
+  }
+
+
+
+}
