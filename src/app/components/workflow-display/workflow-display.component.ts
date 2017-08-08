@@ -9,37 +9,35 @@ import {ActivatedRoute} from "@angular/router"
   styleUrls: ['./workflow-display.component.css']
 })
 export class WorkflowDisplayComponent implements OnInit {
-  workflow;
-  creator;
+  workflowId;
   
-  isDetail:boolean;
+  isDetail:boolean=false;
+  isUpdate:boolean=false;
 
   catname;
-  isCategory:boolean;
+  isCategory:boolean=false;
 
   constructor(private workflowService: WorkflowService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    console.log(this.route.snapshot.url)
     if (this.route.snapshot.url[0].path ==="workflows") {
     this.route.params.subscribe((params)=> {
-      this.workflowService.getSingleWorkflow(String(params["id"])).subscribe((json)=> {
-      console.log(json)
-      
-      this.workflow=json.workflow;
-      this.creator=json.user;
+      this.workflowId=String(params["id"]);
       this.isDetail=true;
-      this.isCategory=false;
+    });
     
-          });
-        });
-    } else {
+    } else if(this.route.snapshot.url[0].path ==="categories")  {
       this.route.params.subscribe((params)=> {
       this.catname=String(params["catname"]);
-      console.log(this.catname);
       this.isCategory=true;
-      this.isDetail=false;
-      });
+      
+    });
+
+
+      
     }
+
   }
 
 

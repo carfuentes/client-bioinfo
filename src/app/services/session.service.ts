@@ -34,6 +34,7 @@ export class SessionService implements CanActivate {
           if (data) {
             this.isAuthenticated = true;
             this.token = token;
+            this.user=data.json();
             return true;
           }
           this.router.navigate(['/login']);

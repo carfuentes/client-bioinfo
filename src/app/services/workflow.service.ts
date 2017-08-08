@@ -21,6 +21,7 @@ export class WorkflowService {
     return new RequestOptions({ headers: headers });
   }
 
+
   handleError(e) {
     return Observable.throw(e.json().message);
   }
@@ -54,6 +55,27 @@ export class WorkflowService {
     return this.http.post(`${this.BASE_URL}/workflows`, body, this.requestOptions())
                     .map(res => res.json())
                     .catch(this.handleError)
+  }
+
+  updateAWorkflow(body,id) {
+     return this.http.put(`${this.BASE_URL}/workflows/${id}/update`, body, this.requestOptions())
+                    .map(res => res.json())
+                    .catch(this.handleError)
+  
+  }
+
+  approveWorkflow(id) {
+     return this.http.put(`${this.BASE_URL}/workflows/${id}/approve`, null, this.requestOptions())
+                    .map(res => res.json())
+                    .catch(this.handleError)
+  
+  }
+
+  deleteWorkflow(id) {
+     return this.http.delete(`${this.BASE_URL}/workflows/${id}`, this.requestOptions())
+                    .map(res => res.json())
+                    .catch(this.handleError)
+  
   }
 
  

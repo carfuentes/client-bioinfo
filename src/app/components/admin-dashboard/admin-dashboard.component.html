@@ -3,13 +3,8 @@
   <li *ngFor="let category of categories">
     <div class="collapsible-header header">{{category.name}} </div>
     <div class="collapsible-body">
-      <div *ngFor="let workflow of category.workflows" class="title"> {{workflow.title}}
-        <span class="chip">
-          <img src="../../../assets/images/user.png" alt="Contact Person">{{workflow.creator.username}}
-      </span>
-      </div>
-      
-        
+      <app-workflow-list [isAdmin]="true" [workflowList]="category.workflows"> </app-workflow-list>
+    
     </div>
 </li>
 </ul>

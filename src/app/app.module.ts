@@ -40,6 +40,7 @@ import { CommentListComponent } from './components/comment-list/comment-list.com
 import { CommentFormComponent } from './components/comment-form/comment-form.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +59,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     WorkflowDisplayComponent,
     CommentListComponent,
     CommentFormComponent,
-    SidebarComponent
+    SidebarComponent,
+   
     
   ],
   imports: [

@@ -8,13 +8,30 @@ import {ActivatedRoute} from "@angular/router"
   styleUrls: ['./workflow-detail.component.css']
 })
 export class WorkflowDetailComponent implements OnInit {
-  @Input() workflow;
+  @Input() workflowId;
+
+  creator;
+  workflow;
+
   newComment={};
   submitted=false;
+  toBeApproved=false;
+  
 
   constructor(private workflowService: WorkflowService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.workflowService.getSingleWorkflow(this.workflowId).subscribe((data)=>
+    {
+      this.workflow=data.workflow;
+      this.creator=data.user;
+
+      if (this.route.snapshot.url[2].path === "check" ) {
+      this.toBeApproved=true;
+    }
+
+    })
+    
   
   }
 
@@ -24,4 +41,15 @@ export class WorkflowDetailComponent implements OnInit {
     this.submitted=true;
   }
 
+  approveWorkflow() {
+    this.workflowService.approveWorkflow(this.workflow._id).subscribe((data) => {
+    console.log(data)
+    });
+  }
+
+  deleteWorkflow(id) {
+    this.workflowService.deleteWorkflow(id).subscribe((data)=> {
+        console.log(data);
+      })
+  }
 }

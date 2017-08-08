@@ -13,10 +13,9 @@ export class WorkflowListComponent implements OnInit {
   @Input() approved:boolean=true;
   @Input() user;
   @Input() catname;
+  @Input () isAdmin;
+  @Input () workflowList;
   
-  
-  workflowList; 
-
   constructor(private workflow: WorkflowService, private route: Router, private category: CategoryService ) { }
 
   ngOnInit() {
@@ -57,6 +56,16 @@ export class WorkflowListComponent implements OnInit {
   getDetails(id) {
      this.route.navigate(["/workflows", id])
     
+  }
+
+  getUserDetails(id) {
+     this.route.navigate(["/user", id])
+    
+  }
+
+  goToCheck(id) {
+     this.route.navigate(["/workflows", id, "check"])
+
   }
 
 }
