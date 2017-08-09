@@ -19,11 +19,13 @@ import { SessionService } from './services/session.service'
 import { CategoryService } from './services/category.service'
 import { WorkflowService } from './services/workflow.service';
 import { CommentService } from './services/comment.service';
+import { ConversationService } from './services/conversation.service';
+
 import { UserInfoService } from './services/user-info.service';
 
 
 import { AppComponent } from './app.component';
-import { CategoriesComponent } from './components/categories/categories.component';
+
 
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -39,12 +41,14 @@ import { WorkflowDisplayComponent } from './components/workflow-display/workflow
 import { CommentListComponent } from './components/comment-list/comment-list.component';
 import { CommentFormComponent } from './components/comment-form/comment-form.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { CategoryFormComponent } from './components/category-form/category-form.component';
+import { MessagesListComponent } from './components/messages-list/messages-list.component';
+import { MessageDetailComponent } from './components/message-detail/message-detail.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CategoriesComponent,
     LoginComponent,
     ProfileComponent,
     WorkflowListComponent,
@@ -60,6 +64,9 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     CommentListComponent,
     CommentFormComponent,
     SidebarComponent,
+    CategoryFormComponent,
+    MessagesListComponent,
+    MessageDetailComponent,
    
     
   ],
@@ -72,7 +79,14 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     DropdownTreeviewModule.forRoot(),
     MaterializeModule,
   ],
-  providers: [SessionService, CategoryService, WorkflowService, CommentService, UserInfoService],
+  providers: [
+    SessionService, 
+    CategoryService, 
+    WorkflowService, 
+    CommentService, 
+    UserInfoService,
+    ConversationService
+   ] ,
   bootstrap: [AppComponent]
 })
 export class AppModule { }

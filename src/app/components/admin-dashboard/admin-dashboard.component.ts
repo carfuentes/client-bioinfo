@@ -11,6 +11,7 @@ import { CategoryService } from '../../services/category.service';
 export class AdminDashboardComponent implements OnInit {
 
   categories;
+  showHide=false;
 
   constructor(private session: SessionService, private category:CategoryService) { }
 
@@ -19,6 +20,12 @@ export class AdminDashboardComponent implements OnInit {
       this.categories=data;
       console.log(this.categories);
     })
+  }
+
+  handleCategoryUpdated(cat) {
+    this.category.getAdminCategories().subscribe(data=> {
+      this.categories=data;
+  });
   }
 
 }

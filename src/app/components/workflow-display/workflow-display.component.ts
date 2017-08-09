@@ -12,7 +12,7 @@ export class WorkflowDisplayComponent implements OnInit {
   workflowId;
   
   isDetail:boolean=false;
-  isUpdate:boolean=false;
+ 
 
   catname;
   isCategory:boolean=false;

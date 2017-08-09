@@ -43,5 +43,12 @@ export class CategoryService {
                     .catch(this.handleError)
   }
 
+  createAcategory(body) {
+    return this.http.post(`${this.BASE_URL}/categories`, body, this.requestOptions())
+                    .map(res => res.json())
+                    .catch(this.handleError)
+
+  }
+
 
 }

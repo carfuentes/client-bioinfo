@@ -1,10 +1,37 @@
 
 <ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
-  <li *ngFor="let category of categories">
-    <div class="collapsible-header header">{{category.name}} </div>
+  <li>
+    <div class="collapsible-header header"> Check new workflows  </div>
     <div class="collapsible-body">
+      <div *ngFor="let category of categories">
+        <div>{{category.name}}</div>
       <app-workflow-list [isAdmin]="true" [workflowList]="category.workflows"> </app-workflow-list>
-    
+      </div>
     </div>
 </li>
+ <li>
+    <div class="collapsible-header header"> Administrate categories </div>
+      <div class="collapsible-body">
+      <div *ngFor="let category of categories">
+        <span class="chip">{{category.name}}  <i class="material-icons">edit</i> </span>
+     
+      </div>
+       <div><i class="material-icons" (click)="showHide = !showHide" >add</i>  </div> 
+           <div *ngIf=showHide > 
+             <app-category-form (submitted)="handleCategoryUpdated($event)">  </app-category-form>
+              </div> 
+        
+      </div>
+</li>
+ <li>
+    <div class="collapsible-header header"> Messages </div>
+      <div class="collapsible-body">
+        <app-messages-list isAdmin="true">  </app-messages-list>
+      </div>
+</li>
 </ul>
+
+
+
+
+

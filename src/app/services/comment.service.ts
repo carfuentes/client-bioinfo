@@ -42,12 +42,8 @@ export class CommentService {
                     .catch(this.handleError)
   }
 
+  
 
-  // getUserApprovedWorkFlows() {
-  //   return this.http.get(`${this.BASE_URL}/workflows/approved`, this.requestOptions())
-  //                   .map(res => res.json())
-  //                   .catch(this.handleError)
-  // }
 }
 
 

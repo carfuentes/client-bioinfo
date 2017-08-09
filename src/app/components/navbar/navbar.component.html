@@ -9,6 +9,7 @@
         <li><a [routerLink]="['/profile']">Profile</a></li>
         <li><a *ngIf="this.session.user.role==='admin'" [routerLink]="['/admin']">Admin Dashboard</a></li>
         <li><a [routerLink]="['/contribute']">Contribute</a></li>
+        <li><a [routerLink]="['/conversations']">Messages</a></li>
         <li><a (click)="logout()">Logout</a></li>
       </ul>
 

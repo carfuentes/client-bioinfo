@@ -13,8 +13,8 @@ import { SessionService } from '../../services/session.service';
 export class WorkflowFormComponent implements OnInit {
   
   workflow;
-  categories = ["RNA-seq", "SNP-microarray", "Gene-expression-microarray", "Gene-networks"]
-  languages= ["Python", "Matlan", "R"];
+  categories = ["RNA-seq", "SNP-microarray", "Gene-expression-microarray", "Gene-networks", "Chip-seq"]
+  languages= ["Python", "Matlab", "R"];
 
   constructor(
     private workflowService: WorkflowService, 

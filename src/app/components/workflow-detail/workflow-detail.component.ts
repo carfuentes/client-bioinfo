@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { WorkflowService } from '../../services/workflow.service';
+import { ConversationService } from '../../services/conversation.service';
+
 import { SessionService } from '../../services/session.service';
-import {ActivatedRoute, Router} from "@angular/router"
+import { ActivatedRoute, Router} from "@angular/router"
 
 @Component({
   selector: 'app-workflow-detail',
@@ -25,7 +27,9 @@ export class WorkflowDetailComponent implements OnInit {
     private workflowService: WorkflowService, 
     private route: ActivatedRoute, 
     private router: Router,
-    private session: SessionService
+    private session: SessionService,
+    private conversation: ConversationService
+
     ) { }
 
   ngOnInit() {
@@ -68,7 +72,19 @@ export class WorkflowDetailComponent implements OnInit {
 
   approveWorkflow() {
     this.workflowService.approveWorkflow(this.workflow._id).subscribe((data) => {
-      this.router.navigate(["/admin"])
+
+      let newConver= {
+      creatorId: this.creator.id._id,
+      subject: "Your workflow has been approved",
+      text: "text"
+
+      }
+
+      this.conversation.startConversation(this.workflowId, newConver).subscribe((data)=> {
+          console.log(data);
+          this.router.navigate(["/admin"])
+      })
+      
     });
   }
 
