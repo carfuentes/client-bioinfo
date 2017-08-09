@@ -57,7 +57,7 @@ export class WorkflowService {
                     .catch(this.handleError)
   }
 
-  updateAWorkflow(body,id) {
+  updateAWorkflow(id,body) {
      return this.http.put(`${this.BASE_URL}/workflows/${id}/update`, body, this.requestOptions())
                     .map(res => res.json())
                     .catch(this.handleError)

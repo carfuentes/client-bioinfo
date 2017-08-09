@@ -12,8 +12,9 @@ import { SessionService } from '../../services/session.service';
 })
 export class WorkflowFormComponent implements OnInit {
   
-  // workflow;
-  // // toBeApproved;
+  workflow;
+  categories = ["RNA-seq", "SNP-microarray", "Gene-expression-microarray", "Gene-networks"]
+  languages= ["Python", "Matlan", "R"];
 
   constructor(
     private workflowService: WorkflowService, 
@@ -24,16 +25,16 @@ export class WorkflowFormComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    // if (this.route.snapshot.url[2].path) {
-    //   this.route.params.subscribe((params)=> {
-    //       this.workflowService.getSingleWorkflow(String(params["id"])).subscribe((data)=>{
-    //           this.workflow=data.workflow;
-    //           console.log(this.workflow)
-    //   });
-    // });
-    
-      
-    };
+    if (this.route.snapshot.url[2]) {
+      this.route.params.subscribe((params)=> {
+          this.workflowService.getSingleWorkflow(String(params["id"])).subscribe((data)=>{
+              this.workflow=data.workflow;
+              console.log(this.workflow)
+      });
+    });
+       
+  };
+  }
     
   
 
@@ -45,17 +46,18 @@ export class WorkflowFormComponent implements OnInit {
     category:myForm.value.category
   };
 
-    // if(!this.workflow) {
+    if(!this.workflow) {
       this.workflowService.createAWorkflow(theWorkFlow).subscribe((res)=> {
       this.router.navigate(['/profile'])
      })
-    //   }  else {
-    //   this.workflowService.updateAWorkflow(this.workflow._id, theWorkFlow).subscribe((res)=> {
-    //   console.log(res.message);
-    //   this.router.navigate(['/workflows', this.workflow._id])
+      }  else {
+      this.workflowService.updateAWorkflow(this.workflow._id, theWorkFlow).subscribe((res)=> {
+      console.log(res.message);
+      this.router.navigate(['/workflows', this.workflow._id])
 
-    //     });
+        });
       }
+  }
    
 
      

@@ -9,14 +9,16 @@
 
  <div class="header">Title: </div>
  <div class="title">{{workflow.title}} </div>
+ <span *ngIf="allowEdits" (click)= "editWorkflow(workflow._id)" ><i class="material-icons">edit</i></span>
+
 
 <div class="header">Category:</div>
 <div class="chip">{{workflow.category}} </div>
 
 <div class="header">Snippet:</div>
 
-
-<ul *ngIf="!toBeApproved" materialize="collapsible" class="collapsible" data-collapsible="accordion">
+<div *ngIf="showComments">     
+<ul  materialize="collapsible" class="collapsible" data-collapsible="accordion">
   <li>
     <div class="collapsible-header header">Comment </div>
     <div class="collapsible-body">
@@ -25,7 +27,7 @@
 </li>
 </ul>
 
-<ul *ngIf="!toBeApproved" materialize="collapsible" class="collapsible" data-collapsible="accordion">
+<ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
   <li>
     <div class="collapsible-header header"><i class="material-icons">message</i></div>
     <div class="collapsible-body">
@@ -34,7 +36,9 @@
 </li>
 </ul>
 
-  <div *ngIf="toBeApproved"> 
+</div>
+
+  <div *ngIf="allowChecks"> 
     <button (click)= "approveWorkflow()">Approve</button> 
     <button (click)= "deleteWorkflow(workflow._id)">Delete</button> 
   </div>

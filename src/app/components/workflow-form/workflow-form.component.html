@@ -5,7 +5,7 @@
     <form class="col s12" (ngSubmit)="submitForm(myForm)" #myForm="ngForm" novalidate>
       <div class="row">
         <div class="input-field col s6">
-          <input  id="title" type="text" class="validate" ngModel name="title">
+          <input  id="title" type="text" class="validate" [ngModel]="workflow ? workflow.title : ''" name="title">
           <label for="title">Title</label>
         </div>
       </div>
@@ -24,22 +24,17 @@
     </div>
         
         <div class="input-field col s6">
-          <select materialize="material_select" name="languages" ngModel>
+          <select materialize="material_select" name="languages" [ngModel]="workflow ? workflow.languages[0] : ''">
             <option value="" disabled selected>Languages</option>
-            <option value="Python">Python</option>
-            <option value="Matlan">Matlab</option>
-            <option value="R">R</option>
+            <option *ngFor="let language of languages" value="{{language}}" >{{language}}</option>
           </select>
           <label>Languages</label>
         </div>
 
         <div class="input-field col s6">
-          <select materialize="material_select" name="category" ngModel>
+          <select materialize="material_select" name="category" [ngModel]="workflow ? workflow.category : ''">
             <option value="" disabled selected>Category</option>
-            <option value="RNA-seq">RNA-seq</option>
-            <option value="SNP-microarray">SNP-microarray</option>
-            <option value="Gene-expression-microarray">Gene-expression-microarray</option>
-            <option value="Gene-networks">Gene-networks</option>
+            <option *ngFor="let category of categories" value="{{category}}" [attr.selected]="workflow?.category === category ? 'selected':null" >{{category}}</option>
 
           </select>
           <label>Category</label>

@@ -9,7 +9,7 @@ import { Router, CanActivate } from '@angular/router';
 export class SessionService implements CanActivate {
   BASE_URL: string = 'http://localhost:3000';
 
-  public user = {};
+  public user;
   public token = '';
   public isAuthenticated = false;
 

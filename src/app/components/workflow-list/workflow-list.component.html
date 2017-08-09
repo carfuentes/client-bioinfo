@@ -4,6 +4,9 @@
 <ul *ngIf="workflowList"> 
   <li *ngFor= "let workflow of workflowList">
     <span (click)= "getDetails(workflow._id)" class="title">{{workflow.title}} </span>
+
+    <span *ngIf="!approved" (click)= "editWorkflow(workflow._id)" ><i class="material-icons">edit</i></span>
+
     <span *ngIf="user; else userAvatar" class="chip" >{{workflow.category}}</span> 
     <ng-template class="chip" #userAvatar  > <span (click)= "getUserDetails(workflow.creator.id)">{{workflow.creator.username}}</span></ng-template>
     <span *ngIf="isAdmin" class="chip" (click)="goToCheck(workflow._id)" >Check!</span> 

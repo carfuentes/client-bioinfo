@@ -23,6 +23,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'contribute', component: WorkflowFormComponent, canActivate:[SessionService]},
+  { path: 'workflows/:id/update', component: WorkflowFormComponent, canActivate:[SessionService]},
   { path: 'workflows/:id/check', component: WorkflowDisplayComponent, canActivate:[SessionService]},
   { path: 'workflows/:id', component: WorkflowDisplayComponent,canActivate:[SessionService] },
   { path: 'categories/:catname/workflows', component: WorkflowDisplayComponent },

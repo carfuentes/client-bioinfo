@@ -58,6 +58,11 @@ export class WorkflowListComponent implements OnInit {
     
   }
 
+  editWorkflow(id) {
+     this.route.navigate(["/workflows",id,"update"]);
+
+  }
+
   getUserDetails(id) {
      this.route.navigate(["/user", id])
     
