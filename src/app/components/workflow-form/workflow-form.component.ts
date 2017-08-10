@@ -13,7 +13,7 @@ import { SessionService } from '../../services/session.service';
 export class WorkflowFormComponent implements OnInit {
   
   workflow;
-  categories = ["RNA-seq", "SNP-microarray", "Gene-expression-microarray", "Gene-networks", "Chip-seq"]
+  categories;
   languages= ["Python", "Matlab", "R"];
 
   constructor(
@@ -32,8 +32,12 @@ export class WorkflowFormComponent implements OnInit {
               console.log(this.workflow)
       });
     });
-       
+   
   };
+   this.category.getLeavesCategories().subscribe(data=> {
+      this.categories=data;
+    })
+       
   }
     
   

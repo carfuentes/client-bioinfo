@@ -41,8 +41,11 @@
   <div *ngIf="allowChecks"> 
     <button (click)= "approveWorkflow()">Approve</button> 
     <button (click)= "deleteWorkflow(workflow._id)">Delete</button> 
+    <button (click)= "showHide =!showHide">Send Comment</button>
   </div>
 
+  <div *ngIf="showHide"></div>
+  <app-comment-form [workflowId]="workflowId" [creatorId]="creator.id._id"></app-comment-form>
 
    </div>
   

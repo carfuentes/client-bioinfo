@@ -31,6 +31,18 @@ export class CategoryService {
                     .catch(this.handleError)
   }
 
+   getParentCategories() {
+    return this.http.get(`${this.BASE_URL}/categories/parents`)
+                    .map(res => res.json())
+                    .catch(this.handleError)
+  }
+
+   getLeavesCategories() {
+    return this.http.get(`${this.BASE_URL}/categories/leaves`)
+                    .map(res => res.json())
+                    .catch(this.handleError)
+  }
+
   getWorkflowsCategories(catname) {
     return this.http.get(`${this.BASE_URL}/categories/${catname}/workflows`)
                     .map(res => res.json())

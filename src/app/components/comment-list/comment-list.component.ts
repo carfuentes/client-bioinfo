@@ -13,8 +13,10 @@ import { SessionService } from '../../services/session.service'
 })
 export class CommentListComponent implements OnInit {
   @Input() newComment={};
+  @Input() messageList;
 
-  commentList;
+  commentList
+
   constructor(
     private session: SessionService, 
     private comment: CommentService, 
@@ -24,6 +26,8 @@ export class CommentListComponent implements OnInit {
   
   ngOnInit() {
     this.getComments()
+  
+    
   }
 
   ngOnChanges() {
@@ -32,6 +36,10 @@ export class CommentListComponent implements OnInit {
   }
 
   getComments() {
+    if(this.messageList) {
+      this.commentList=this.messageList;
+      return;
+    }
     this.route.params.subscribe((params)=> {
       this.comment.getWorkflowComments(String(params["id"])).subscribe((json)=> {
         this.commentList=json;

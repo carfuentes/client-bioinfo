@@ -4,11 +4,10 @@
       <label for="name">Name</label>
   </div>
 
-  <div class="input-field">
+  <div *ngIf="categories" class="input-field">
       <select materialize="material_select" name="parent" ngModel>
       <option value="" disabled selected>Parent</option>
-       <option value="Transcriptomics">Transcriptomics </option>
-       <option value="Microarrays">Microarrays </option>
+      <option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}</option>
           </select>
           <label>Path</label>
   </div>
@@ -17,5 +16,5 @@
     <i class="material-icons right">send</i>
           </button>
 
-<!--
-      <tree-root [nodes]="nodes" options="isExpanded='expaded'"> </tree-root>-->
+
+    

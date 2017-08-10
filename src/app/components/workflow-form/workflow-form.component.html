@@ -31,10 +31,10 @@
           <label>Languages</label>
         </div>
 
-        <div class="input-field col s6">
+        <div  *ngIf="categories" class="input-field col s6">
           <select materialize="material_select" name="category" [ngModel]="workflow ? workflow.category : ''">
             <option value="" disabled selected>Category</option>
-            <option *ngFor="let category of categories" value="{{category}}" [attr.selected]="workflow?.category === category ? 'selected':null" >{{category}}</option>
+            <option *ngFor="let category of categories" value="{{category.name}}" [attr.selected]="workflow?.category === category.name ? 'selected':null" >{{category.name}}</option>
 
           </select>
           <label>Category</label>

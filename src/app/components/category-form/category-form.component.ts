@@ -14,13 +14,13 @@ import { CategoryService } from '../../services/category.service'
 })
 export class CategoryFormComponent implements OnInit {
   @Output() submitted = new EventEmitter<boolean>();
-  nodes;
+  categories;
 
   constructor(private category: CategoryService, private router:Router) { }
 
   ngOnInit() {
-    this.category.getTreeCategories().subscribe(json=> {
-      this.nodes=json;
+    this.category.getParentCategories().subscribe(json=> {
+      this.categories=json;
     })
   }
 

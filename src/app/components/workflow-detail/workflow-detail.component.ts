@@ -21,6 +21,7 @@ export class WorkflowDetailComponent implements OnInit {
   showComments=false;
   allowChecks=false;
   allowEdits=false;
+  showHide=false;
   
 
   constructor(
@@ -34,6 +35,7 @@ export class WorkflowDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getWorkflow(this.workflowId);
+    console.log(this.showHide);
    
   }
 
@@ -75,7 +77,7 @@ export class WorkflowDetailComponent implements OnInit {
 
       let newConver= {
       creatorId: this.creator.id._id,
-      subject: "Your workflow has been approved",
+      title: "Your workflow has been approved",
       text: "text"
 
       }
