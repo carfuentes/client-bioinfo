@@ -1,4 +1,6 @@
-<div  *ngFor="let conver of conversationList">
-  <app-message-detail [converId]="conver?._id"> </app-message-detail>
+
+<h2 *ngIf="!isAdmin">My messages</h2>
+<div *ngFor="let conver of conversationList">
+  <app-message-detail [isAdmin]="isAdmin"[converId]="conver._id"> </app-message-detail>
 
 </div>

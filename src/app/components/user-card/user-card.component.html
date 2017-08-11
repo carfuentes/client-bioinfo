@@ -1,46 +1,55 @@
 
-  <div class=card> 
+  <div *ngIf="user" [ngClass]="{horizontal: !isCat && !isWf}" class="card profile"> 
  
-    <div class="card-image">
-          <img src="../../../assets/images/user.png">
-          <span class="card-title">{{user.username}}</span>
+    <div class="card-image avatar" >
+          <img  class="img-avatar"src="../../../assets/images/user.png" >
+          <div class="card-title"> <span class="car-name recuadro">{{user.username}}</span></div>
           
          
           
         </div>
-    <div class="card-content">
+    <!--<div class="card-content">
       <p>{{user.name}}</p>
     </div>
     <div class="card-tabs">
       <ul class="tabs tabs-fixed-width"  materialize="tabs">
         <li class="tab"><a [routerLink]="['/profile']" fragment="workflows">workflows</a></li>
         <li class="tab"><a [routerLink]="['/profile']" fragment="social">social</a></li>
-        <!--<li *ngIf="isAdmin" class="tab"><a [routerLink]="['/profile']" fragment="admin-dashboard">Admin</a></li>-->
       </ul>
-    </div>
+    </div>-->
 
 
 
-
-<div class="card-content grey lighten-4">
-      <div id="social">
-        <ul>
-          <li> <a href="https://github.com/{{user.links.github}}"> {{user.links.github}}</a> </li>
-          <li> <a href="https://github.com/{{user.links.twitter}}"> {{user.links.twitter}}</a> </li>
-        </ul>
-      </div>
-    
-      <div id="workflows"> 
+<div *ngIf="!isCat"class="card-stacked">
+<ul materialize="collapsible" class="card-content grey lighten-4 collapsible no-border" data-collapsible="accordion">
+  <li>
+      <div class="collapsible-header old-tab grey lighten-4"> Social </div>
+        
+        <div class="collapsible-body">
+          <div> <a href="https://github.com/{{user.links.github}}">           
+                  <i class="material-icons prefix"><i class="fa fa-github" style="color:#392b4f; font-size:38px"></i></i>
+                                                      {{user.links.github}}</a> </div>
+          <div> <a href="https://twitter.com/{{user.links.twitter}}"><i class="material-icons prefix"><i class="fa fa-twitter" style="color:#1DA1F2; font-size:38px"> </i></i>
+                    {{user.links.twitter}}</a> </div>
+        </div>
+      
+  </li> 
+  <li>
+      <div class="collapsible-header old-tab grey lighten-4"> Workflows </div>
+      <div class="collapsible-body">
         <div class= "header"> Approved <i class="material-icons" style="color:chartreuse">check_circle</i> </div>
         <app-workflow-list [user]= "user" [approved]="true"></app-workflow-list> 
 
       <div *ngIf="isProfile">
-        <div class= "header">In course <i class="material-icons" style="color:orange">access_time</i> </div>
+        <div class= "header">To be approved <i class="material-icons" style="color:orange">access_time</i> </div>
         <app-workflow-list [user]= "user" [approved]="false"></app-workflow-list> 
         <a materialize="tooltip" [materializeParams]="tooltips" data-position="bottom" data-delay="50" data-tooltip="Contribute" class="btn-floating  waves-effect waves-light red tooltipped" [routerLink]="['/contribute']"><i class="material-icons">add</i></a>
       </div>
+      </div>
+  </li>
+      </ul>
+  
     </div>
+</div>
 
-</div>
-</div>
     

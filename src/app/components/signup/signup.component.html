@@ -1,18 +1,20 @@
 
 
+
+  <div class="marco">
 <h2>Sign up</h2>
 
   <div class="row">
     <form class="col s12" (ngSubmit)="submitForm(myForm)" #myForm="ngForm" novalidate>
       <div class="row">
         <div class="input-field col s6">
-          <input placeholder="Username" id="username" type="text" class="validate" ngModel name="username">
+          <input id="username" type="text" class="validate" ngModel name="username">
           <label for="username">Username</label>
         </div>
       </div>
        <div class="row">
         <div class="input-field col s6">
-          <input placeholder="name" id="name" type="text" class="validate" ngModel name="name">
+          <input id="name" type="text" class="validate" ngModel name="name">
           <label for="name">Name</label>
         </div>
       </div>
@@ -30,12 +32,12 @@
         
         <div class="row">
         <div class="input-field col s6">
-          <i class="material-icons prefix"><i class="fa fa-github" style="font-size:38px"></i></i>
+          <i class="material-icons prefix"><i class="fa fa-github" style="color:#392b4f; font-size:38px"></i></i>
           <input id="icon_prefix" type="text" class="validate" ngModel name="github">
           <label for="icon_prefix">GitHub</label>
         </div>
         <div class="input-field col s6">
-          <i class="material-icons prefix"><i class="fa fa-twitter" style="font-size:38px"> </i></i>
+          <i class="material-icons prefix"><i class="fa fa-twitter" style="color:#1DA1F2; font-size:38px"> </i></i>
           <input id="icon_telephone" type="tel" class="validate" ngModel name="twitter">
           <label for="icon_telephone">Twitter</label>
         </div>
@@ -59,6 +61,7 @@
           </button>
       
     </form>
+  </div>
   </div>
 
   

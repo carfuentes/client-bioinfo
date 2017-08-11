@@ -13,18 +13,16 @@
 
 .main-nav {
     /*position: fixed;*/
-    top: 64px;
-    bottom: 0;
-    
-    padding: 20px 4px;
-    height: 100%;
+    width:200px;
+    height: 500px;
+    background-repeat: repeat;
 }
 
-/*
-#component-data {
-    position:absolute;
-    left: 350px;
-    height: 100%;
-    width: 100%;
-}*/
+
+
+
+
+
+
+
 

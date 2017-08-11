@@ -1,43 +1,52 @@
-
+<div class="container">
 <h2>Form</h2>
 
   <div class="row">
-    <form class="col s12" (ngSubmit)="submitForm(myForm)" #myForm="ngForm" novalidate>
+    <form class="col s10" (ngSubmit)="submitForm(myForm)" #myForm="ngForm" novalidate>
       <div class="row">
-        <div class="input-field col s6">
+        <div class="input-field col s10">
           <input  id="title" type="text" class="validate" [ngModel]="workflow ? workflow.title : ''" name="title">
           <label for="title">Title</label>
+         </div>
+        </div>
+        <div class="row">
+        <div class="input-field col s10">
+          <textarea  id="description" type="text" class="validate" [ngModel]="workflow ? workflow.description : ''" name="description"> </textarea>
+          <label for="description">Description</label>
         </div>
       </div>
      
+     
     <div class="row">
-      <div class="file-field input-field col s6">
+      <div class="file-field input-field col s10">
           <div class="btn">
           <span>File</span>
-          <input type="file" ngModel name="file">
+          <input type="file" ngModel name="file" ng2FileSelect [uploader]="uploader">
           </div>
           <div class="file-path-wrapper">
-          <input class="file-path validate" type="text"  ng2FileSelect [uploader]="uploader" >
+          <input class="file-path validate" type="text"   >
       </div>
     </div>
     
     </div>
-        
-        <div class="input-field col s6">
+        <div class="row">
+        <div class="input-field col s5">
           <select materialize="material_select" name="languages" [ngModel]="workflow ? workflow.languages[0] : ''">
             <option value="" disabled selected>Languages</option>
             <option *ngFor="let language of languages" value="{{language}}" >{{language}}</option>
           </select>
           <label>Languages</label>
         </div>
-
-        <div  *ngIf="categories" class="input-field col s6">
+        </div>
+        <div class="row">
+        <div  *ngIf="categories" class="input-field col s5">
           <select materialize="material_select" name="category" [ngModel]="workflow ? workflow.category : ''">
             <option value="" disabled selected>Category</option>
             <option *ngFor="let category of categories" value="{{category.name}}" [attr.selected]="workflow?.category === category.name ? 'selected':null" >{{category.name}}</option>
 
           </select>
           <label>Category</label>
+        </div>
         </div>
       
       <div *ngIf="error">
@@ -49,6 +58,8 @@
           </button>
       
     </form>
+    </div>
+
     </div>
   
  

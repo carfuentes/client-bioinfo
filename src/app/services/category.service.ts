@@ -62,5 +62,13 @@ export class CategoryService {
 
   }
 
+  categoryWithRegex(catname,regex) {
+    return this.http.get(`${this.BASE_URL}/categories/${catname}/${regex}/workflows`, this.requestOptions())
+                    .map(res => res.json())
+                    .catch(this.handleError)
+
+
+  }
+
 
 }

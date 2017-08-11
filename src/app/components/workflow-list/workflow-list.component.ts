@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { WorkflowService } from '../../services/workflow.service';
 import { CategoryService } from '../../services/category.service';
+import { SharedFilteringService } from '../../services/shared-filtering.service';
 
 
 @Component({
@@ -13,12 +14,24 @@ export class WorkflowListComponent implements OnInit {
   @Input() approved:boolean=true;
   @Input() user;
   @Input() catname;
+  @Input() language;
   @Input () isAdmin;
   @Input () workflowList;
-  
-  constructor(private workflow: WorkflowService, private route: Router, private category: CategoryService ) { }
 
+  pattern="";
+  
+  constructor(
+    private workflow: WorkflowService, 
+    private route: Router, 
+    private category: CategoryService,
+    private filtering: SharedFilteringService
+     ) { }
+
+    
   ngOnInit() {
+    this.filtering.patternChanging.subscribe((pattern)=> {
+              this.pattern=pattern;
+          })
 
     if (this.approved && this.user) {
 
@@ -35,7 +48,7 @@ export class WorkflowListComponent implements OnInit {
     } else if(this.catname) {
      this.getCategory(this.catname)
      
-    }
+    } 
 
   }
 
@@ -49,7 +62,8 @@ export class WorkflowListComponent implements OnInit {
   getCategory(catname) {
     this.category.getWorkflowsCategories(catname).subscribe((workflows)=> {
         this.workflowList=workflows;
-        console.log(workflows);
+        console.log("entré",this.workflowList);
+        
       })
   }
 

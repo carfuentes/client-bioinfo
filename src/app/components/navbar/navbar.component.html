@@ -1,6 +1,11 @@
 <nav>
-    <div class="nav-wrapper grey lighten-2">
-      <a href="#" class="brand-logo left logo"> <i class="material-icons"><img src="../../../assets/images/biology.png" alt=""></i>Bioinfo</a>
+    <div class="nav-wrapper">
+      <a  class="brand-logo left logo" href="#"> <i class="material-icons"><img src="../../../assets/images/dna.png" alt=""></i>Bioinfo</a>
+      <!--<ul id="dropdown" class="dropdown-content">)
+      <app-sidebar ></app-sidebar>
+      </ul>
+      -->
+      
       <ul *ngIf="this.session.isAuthenticated" id="nav-mobile" class="right hide-on-med-and-down">
         <li>
                 <span class="hi">Hi {{ this.session.user.username }} !</span>

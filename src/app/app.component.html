@@ -1,14 +1,19 @@
 <!--The content below is only a placeholder and can be replaced.-->
  <app-navbar></app-navbar>
 <main class="row main-content">
-  <nav class="col s3 grey lighten-2 main-nav">
+  <div class="col s2 main-nav">
     <app-sidebar></app-sidebar>
-  </nav>
+  </div>
 
-  <section class="col s9" id="component-data">
+  <section class="col s10" id="component-data">
+    <div class="container">
     <router-outlet></router-outlet>
+    </div>
   </section>
 
+  <div class="col s2 main-nav">
+
+  </div>
 </main>
           
 

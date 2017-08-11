@@ -5,8 +5,122 @@
 
 }
 
+.title2 {
+    font-weight: bolder;
+    color: #914b54;
+    cursor:pointer;
+
+}
+
 .header {
     font-weight: bolder;
     font-size: 1.2rem;
 
+}
+
+.page-title {
+    font-family: 'Raleway', sans-serif;
+
+}
+
+.btn {
+    background-color: white;
+    border:2px solid #914b54;
+    border-radius: 6px;
+    font-weight: bold;
+    color:black;
+   
+}
+
+.btn:hover {
+background-color: #e0aabc;
+color:white;
+
+}
+
+* {
+    font-family: 'Raleway', sans-serif;
+ 
+
+}
+
+.marco {
+    width:70%;
+    margin-top:50px;
+}
+
+.recuadro {
+    border:1px solid #EDC02A;
+    border-radius:6px;
+    cursor: pointer;
+}
+
+.label {
+    color:#556359;
+    font-weight: bold;
+    font-size: 14px;
+   
+
+}
+
+.field {
+    margin:10px;
+}
+
+.textarea {
+    border:3px dotted #c9bcd6;
+    border-radius:6px;
+    margin-left:40px;
+    height:100px;
+    font-size:14px;
+    padding:5px;
+}
+
+.message-form {
+    border:0px;
+    box-shadow: 0 0 0 0;
+    margin-bottom: 2px;
+}
+
+.date {
+    font-size: 18px;
+}
+
+.comment-form {
+     margin-left:40px;
+    
+}
+
+.code {
+    width:90%;
+    border:2px dotted #c9bcd6;
+    height: 500px;
+}
+
+.profile {
+    width:100%;
+    font-size: 15px;
+}
+
+.old-tab {
+    color:#EA2578;
+    text-transform: uppercase;
+}
+
+.no-border {
+    border:none;
+}
+
+
+
+.img-avatar {
+    width: inherit;
+    height: inherit;
+}
+
+.car-name{
+    color:black !important;
+    font-weight: bold;
+    background-color: white;
+    padding:5px;
 }

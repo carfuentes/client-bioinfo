@@ -8,7 +8,7 @@ import { SessionService } from './session.service'
 @Injectable()
 export class UserInfoService {
 
-  BASE_URL: string = 'http://localhost:3000/api'
+  BASE_URL: string = 'http://localhost:3000'
 
   constructor(private session: SessionService, private http: Http) { }
 
@@ -30,7 +30,7 @@ export class UserInfoService {
   // }
 
   getUserProfile(id) {
-    return this.http.get(`${this.BASE_URL}/user/${id}`, this.requestOptions())
+    return this.http.get(`${this.BASE_URL}/user/${id}`)
                     .map(res => res.json())
                     .catch(this.handleError)
   }

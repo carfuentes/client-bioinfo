@@ -1,35 +1,54 @@
 <div class="col s3">
-      <app-user-card *ngIf="creator" [user]="creator.id" [isProfile]="false"></app-user-card>
+      <app-user-card *ngIf="creator" [user]="creator.id" [isProfile]="false" [isWf]="true"></app-user-card>
  </div>
 
 
 
  <div class="col s9">
 <div *ngIf="workflow" class="card">
+  <div *ngIf="allowChecks"> 
+    <button (click)= "approveWorkflow()">Approve</button> 
+    <button (click)= "deleteWorkflow(workflow._id)">Delete</button> 
+    <button (click)= "showHide =!showHide">Send Comment</button>
+     <div *ngIf="showHide">
+  <app-comment-form [workflowId]="workflowId" [creatorId]="creator.id._id"></app-comment-form>
+</div>
+   </div>
 
- <div class="header">Title: </div>
- <div class="title">{{workflow.title}} </div>
- <span *ngIf="allowEdits" (click)= "editWorkflow(workflow._id)" ><i class="material-icons">edit</i></span>
 
+ <div class="field">
+   <span  class="label">Title</span> 
+ <span class="title">{{workflow.title}}</span>  <span *ngIf="allowEdits" (click)= "editWorkflow(workflow._id)" ><i class="material-icons">edit</i></span></div>
 
-<div class="header">Category:</div>
-<div class="chip">{{workflow.category}} </div>
+ <div class="field">
+   <span  class="label">Tags</span> 
+<span class="chip">{{workflow.category}} </span>
+<span class="chip">{{workflow.languages}} </span>
+</div>
 
-<div class="header">Snippet:</div>
+<div class="field">
+   <span  class="label">Description</span> 
+<div class="textarea">{{workflow.description}} </div>
+</div>
+
+<div class="field">
+  <div class="label">Snippet:</div>
+  <iframe src="../../../assets/workflows/code.txt" class="code" scrolling="yes"></iframe>
+</div>
 
 <div *ngIf="showComments">     
-<ul  materialize="collapsible" class="collapsible" data-collapsible="accordion">
+<ul  materialize="collapsible" class="collapsible message-form" data-collapsible="accordion">
   <li>
-    <div class="collapsible-header header">Comment </div>
+    <div class="collapsible-header header"> <span class="to-right">  {{workflow.comments.length}} Comments </span></div>
     <div class="collapsible-body">
     <app-comment-list [newComment]= "newComment"></app-comment-list>
     </div>
 </li>
 </ul>
 
-<ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
+<ul materialize="collapsible" class="collapsible message-form" data-collapsible="accordion">
   <li>
-    <div class="collapsible-header header"><i class="material-icons">message</i></div>
+    <div class="collapsible-header header"><span class="to-right">Leave a comment</span><i class="material-icons right">message</i></div>
     <div class="collapsible-body">
     <app-comment-form (commentsUpdated)="handleCommentUpdated($event)"></app-comment-form>
     </div>
@@ -38,15 +57,7 @@
 
 </div>
 
-  <div *ngIf="allowChecks"> 
-    <button (click)= "approveWorkflow()">Approve</button> 
-    <button (click)= "deleteWorkflow(workflow._id)">Delete</button> 
-    <button (click)= "showHide =!showHide">Send Comment</button>
+
   </div>
-
-  <div *ngIf="showHide"></div>
-  <app-comment-form [workflowId]="workflowId" [creatorId]="creator.id._id"></app-comment-form>
-
-   </div>
   
   </div>

@@ -22,6 +22,7 @@ export class WorkflowDetailComponent implements OnInit {
   allowChecks=false;
   allowEdits=false;
   showHide=false;
+
   
 
   constructor(
@@ -60,7 +61,8 @@ export class WorkflowDetailComponent implements OnInit {
 
       } else if (this.creator.id._id === this.session.user._id) {    
         this.allowEdits=true;
-    }
+
+    } 
 
     })
 

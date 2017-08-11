@@ -1,19 +1,41 @@
 
 
-<div>
+
 <ul *ngIf="workflowList"> 
-  <li *ngFor= "let workflow of workflowList">
+  <li *ngFor= "let workflow of workflowList | filter:'title':pattern">
+
+      <div *ngIf="user">
     <span (click)= "getDetails(workflow._id)" class="title">{{workflow.title}} </span>
 
     <span *ngIf="!approved" (click)= "editWorkflow(workflow._id)" ><i class="material-icons">edit</i></span>
-
-    <span *ngIf="user; else userAvatar" class="chip" >{{workflow.category}}</span> 
-    <ng-template class="chip" #userAvatar  > <span (click)= "getUserDetails(workflow.creator.id)">{{workflow.creator.username}}</span></ng-template>
-    <span *ngIf="isAdmin" class="chip" (click)="goToCheck(workflow._id)" >Check!</span> 
    
+    </div>
+
+     <div *ngIf="!user" class="card row" >
+        <div class="col s6">
+          <div>
+            <span class="label">Title:</span> 
+            <span (click)= "getDetails(workflow._id)" class="title2">{{workflow.title}}</span>
+          </div>
+          <div>
+       <span class="label">Tags:</span>
+          <span class="chip">{{workflow.category}}</span> 
+          <span class="chip">{{workflow.languages}}</span> 
+          </div>
+          <div class="date" style="font-size:12px;">
+        <span>Date:</span><span>{{workflow.created_at | date:mediumDate}}</span> 
+        </div>
+         <div *ngIf="isAdmin" class="check" (click)="goToCheck(workflow._id)" ><img class="" src="../../../assets/images/list.png" alt=""><br>Check</div> 
+        </div>
+        
+          <div class="col s2 userAvatar"><app-user-card [isCat]="workflow.creator.id" (click)= "getUserDetails(workflow.creator.id)"></app-user-card> </div>
+         
+
+    </div>
+     
   </li>
 </ul>
-</div>
+
 
 
 

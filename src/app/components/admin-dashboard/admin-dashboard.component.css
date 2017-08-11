@@ -1,6 +1,7 @@
-.title {
+.title3 {
     font-weight: bolder;
-    color: #26A69A;
+    color: #EDC02A;
+    font-size:20px;
 
 }
 
@@ -8,4 +9,9 @@
     font-weight: bolder;
     font-size: 1.2rem;
 
+}
+
+.dash {
+    padding-right: 22px;
+    width: 68px;
 }

@@ -52,6 +52,7 @@ export class WorkflowService {
   }
 
   createAWorkflow(body) {
+    console.log(body);
     return this.http.post(`${this.BASE_URL}/workflows`, body, this.requestOptions())
                     .map(res => res.json())
                     .catch(this.handleError)

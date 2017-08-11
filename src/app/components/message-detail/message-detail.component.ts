@@ -12,12 +12,14 @@ import { ActivatedRoute, Router} from "@angular/router"
 })
 export class MessageDetailComponent implements OnInit {
   @Input() converId;
+  @Input() isAdmin;
   messageList;
   conver;
 
   newComment={};
 
-  constructor(private conversation: ConversationService) { }
+  constructor(private conversation: ConversationService,
+              private router: Router) { }
 
   ngOnInit() {
     this.conversation.getSingleConversation(this.converId).subscribe(data=> {
@@ -34,6 +36,15 @@ export class MessageDetailComponent implements OnInit {
       this.conver=data;
       this.newComment=comment.id;
     }) 
+  }
+
+   goToUserProfile(id) {
+    this.router.navigate(['/user', id ]);
+
+  }
+  getDetails(id) {
+     this.router.navigate(["/workflows", id])
+    
   }
 
   

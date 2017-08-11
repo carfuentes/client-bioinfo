@@ -1,29 +1,41 @@
-<div *ngIf="conver">
+<div class="conver "*ngIf="conver">
 
+<div *ngIf="isAdmin" (click)="goToUserProfile(conver.user._id)">
 <img width="50px"src="https://s-media-cache-ak0.pinimg.com/736x/0a/8b/91/0a8b91f0bfbbcbc65fb7d43cd9ff4c78--grey-bunny-cutest-bunnies.jpg" alt="" class="circle">
-      <span class="title">{{conver.user.username}}</span>
-     
+    <span class="header recuadro">{{conver.user.username}}</span>
+     </div>
 
-  <div class="header"> {{conver.workflow.title}} - {{conver.created_at}}</div>
-  <div> {{conver.messages.length}} messages</div>
+<div *ngIf="!isAdmin" (click)="goToUserProfile(conver.admin._id)">
+<img width="50px"src="https://s-media-cache-ak0.pinimg.com/736x/0a/8b/91/0a8b91f0bfbbcbc65fb7d43cd9ff4c78--grey-bunny-cutest-bunnies.jpg" alt="" class="circle">
+    <span class="header recuadro">{{conver.admin.username}}</span>
+     </div>
+
+
+  <div> <span  class="label"> Workflow </span> <span class="title" (click)="getDetails(conver.workflow._id)" >{{conver.workflow.title}}</span> </div> 
+  <div>  <span class="label"> Date:</span> <span class="date"> {{conver.created_at | date:mediumDate}}</span></div>
+  
 
   <ul  materialize="collapsible" class="collapsible" data-collapsible="accordion">
   <li>
-    <div class="collapsible-header header">Messages </div>
+    
+    <div class="collapsible-header header"> {{conver.messages.length}} Messages </div>
     <div class="collapsible-body">
     <app-comment-list [messageList]="conver.messages" [newComment]= "newComment"></app-comment-list>
-    </div>
-</li>
-</ul>
 
-<ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
+<ul  materialize="collapsible" class="collapsible message-form" data-collapsible="accordion">
   <li>
-    <div class="collapsible-header header"><i class="material-icons">message</i></div>
+    <div class="collapsible-header"> <span style="float:right;">Reply</span><i class="material-icons right">message</i></div>
     <div class="collapsible-body">
     <app-comment-form  converId="{{conver._id}}" (commentsUpdated)="handleMessageUpdated($event)"></app-comment-form>
     </div>
 </li>
 </ul>
+    
+    </div>
+</li>
+</ul>
+
+
 
   
 

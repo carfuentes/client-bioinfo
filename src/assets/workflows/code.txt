@@ -1,0 +1,48 @@
+
+import random
+
+
+def incorporating_node(edges,nodes):
+	p=[]
+	denominator=sum(len(nexo) for nexo in edges.values())
+	for node in nodes:
+		numerator= len(edges[node])
+		p.append(numerator/denominator)
+	return p
+
+def recursive_nodes(nodes,p,E):
+	if E==1:
+		node_links= list(random.choices(nodes, weights=p, k=E))
+		return node_links
+	else:
+		node_links= random.choices(nodes, weights=p, k=E)
+		set_node=set(node_links)
+		if len(set_node) > 1:
+			return node_links
+		else:
+			return recursive_nodes(nodes,p,E)
+
+def ba_network_generator(n,E):
+	nodes=[1,2,3]
+	edges = {1:[2,3],2:[3,1],3:[1,2]}
+	new_node=4
+	while new_node<=n:
+		p=incorporating_node(edges,nodes)
+		node_links=recursive_nodes(nodes,p,E)
+		edges[new_node]=[]
+		for el in node_links:
+			edges[new_node].append(el)
+			edges[el].append(new_node)
+		nodes.append(new_node)
+		new_node+=1
+
+	name_file="BA_network"+str(n)+"_"+str(E)+".net"
+	out=open(name_file,"w")
+	out.write("*Vertices %s\n"%n)
+	out.write("*Edges \n")
+	for key in edges:
+		for value in edges[key]:
+			out.write("%s\t%s\n"%(key,value))
+	out.close()
+	
+ba_network_generator(20,1)

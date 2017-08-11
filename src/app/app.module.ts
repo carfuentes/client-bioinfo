@@ -20,7 +20,7 @@ import { CategoryService } from './services/category.service'
 import { WorkflowService } from './services/workflow.service';
 import { CommentService } from './services/comment.service';
 import { ConversationService } from './services/conversation.service';
-
+import { SharedFilteringService } from './services/shared-filtering.service';
 import { UserInfoService } from './services/user-info.service';
 
 
@@ -44,6 +44,12 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { CategoryFormComponent } from './components/category-form/category-form.component';
 import { MessagesListComponent } from './components/messages-list/messages-list.component';
 import { MessageDetailComponent } from './components/message-detail/message-detail.component';
+import { CollapsibleModule } from 'angular2-collapsible'; 
+
+
+import { FilterPipe } from './pipes/filter.pipe';
+import { DatePipe } from '@angular/common';
+
 
 
 @NgModule({
@@ -67,6 +73,8 @@ import { MessageDetailComponent } from './components/message-detail/message-deta
     CategoryFormComponent,
     MessagesListComponent,
     MessageDetailComponent,
+    FilterPipe,
+  
    
     
   ],
@@ -85,7 +93,8 @@ import { MessageDetailComponent } from './components/message-detail/message-deta
     WorkflowService, 
     CommentService, 
     UserInfoService,
-    ConversationService
+    ConversationService,
+    SharedFilteringService
    ] ,
   bootstrap: [AppComponent]
 })

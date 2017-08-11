@@ -1,6 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import {MaterializeDirective} from "angular2-materialize";
+import { MaterializeDirective} from "angular2-materialize";
 import { WorkflowService } from '../../services/workflow.service';
 import { CategoryService } from '../../services/category.service';
 import { SessionService } from '../../services/session.service';
@@ -15,6 +15,7 @@ export class WorkflowFormComponent implements OnInit {
   workflow;
   categories;
   languages= ["Python", "Matlab", "R"];
+  
 
   constructor(
     private workflowService: WorkflowService, 
@@ -47,7 +48,8 @@ export class WorkflowFormComponent implements OnInit {
     title: myForm.value.title,
     languages : myForm.value.languages,
     file: myForm.value.file,
-    category:myForm.value.category
+    category:myForm.value.category,
+    description:myForm.value.description,
   };
 
     if(!this.workflow) {
@@ -55,8 +57,9 @@ export class WorkflowFormComponent implements OnInit {
       this.router.navigate(['/profile'])
      })
       }  else {
+        console.log("entré")
       this.workflowService.updateAWorkflow(this.workflow._id, theWorkFlow).subscribe((res)=> {
-      console.log(res.message);
+      console.log(res);
       this.router.navigate(['/workflows', this.workflow._id])
 
         });

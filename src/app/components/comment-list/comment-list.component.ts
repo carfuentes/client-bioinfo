@@ -52,5 +52,6 @@ export class CommentListComponent implements OnInit {
     this.router.navigate(['/user', id ]);
 
   }
+  
 
 }

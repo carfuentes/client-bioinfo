@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { UserInfoService} from '../../services/user-info.service';
 
 @Component({
   selector: 'app-user-card',
@@ -9,12 +10,20 @@ export class UserCardComponent implements OnInit {
   @Input() user;
   @Input() isProfile;
   @Input() title;
+  @Input() isCat;
+  @Input() isWf;
   
 
-  constructor() { }
+  constructor(private userService:UserInfoService) { }
 
   ngOnInit() {
-    console.log(this.user)
+    if(this.isCat) {
+      this.userService.getUserProfile(this.isCat).subscribe((data)=>{
+        this.user=data;
+      })
+
+
+    }
   }
 
 }

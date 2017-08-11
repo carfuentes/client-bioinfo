@@ -1,8 +1,16 @@
 *, .logo {
-    color:#006064;
+    color:black;
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    background-color:white;
+
 }
 
 .hi {
     font-weight: bold;
     
 }
+
+/*.dropdown-context {
+    width: 132.047px; position: absolute; top: 109.406px; left: 260px; display: none; opacity: 1;
+}*/
