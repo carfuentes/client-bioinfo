@@ -13,6 +13,7 @@ import { SessionService } from './session.service'
 export class CommentService {
 
   BASE_URL: string = 'http://localhost:3000/api';
+  BASE_PUBLIC: string = 'http://localhost:3000';
   commentList;
 
   constructor(private session: SessionService, private http: Http) { }
@@ -30,7 +31,7 @@ export class CommentService {
 
 
   getWorkflowComments(id) {
-    return this.http.get(`${this.BASE_URL}/workflows/${id}/comments`, this.requestOptions())
+    return this.http.get(`${this.BASE_PUBLIC}/workflows/${id}/comments`)
     .map((response)=>  {
       return response.json()
     })
@@ -42,7 +43,7 @@ export class CommentService {
                     .catch(this.handleError)
   }
 
-  
+
 
 }
 

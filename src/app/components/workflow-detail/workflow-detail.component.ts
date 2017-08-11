@@ -41,10 +41,12 @@ export class WorkflowDetailComponent implements OnInit {
   }
 
   ngOnChanges(changes) {
+    
     if(changes.workflowId) {
     this.workflowId=changes.workflowId.currentValue;
     this.getWorkflow(this.workflowId);
-    }
+  } 
+  
   }
 
   getWorkflow(workflowId) {
@@ -70,7 +72,7 @@ export class WorkflowDetailComponent implements OnInit {
 
   handleCommentUpdated(comment) {
     console.log(comment);
-    this.newComment=comment.id;
+    this.newComment={id:comment.id};
     this.submitted=true;
   }
 
@@ -80,7 +82,7 @@ export class WorkflowDetailComponent implements OnInit {
       let newConver= {
       creatorId: this.creator.id._id,
       title: "Your workflow has been approved",
-      text: "text"
+      text: "Congratulations! Thank you for colaborate with your work"
 
       }
 

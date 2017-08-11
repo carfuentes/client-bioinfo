@@ -4,6 +4,7 @@ import { TREE_ACTIONS, KEYS, IActionMapping, ITreeOptions } from 'angular-tree-c
 import { Router } from "@angular/router";
 
 import { CategoryService } from '../../services/category.service'
+import { SharedFilteringService } from '../../services/shared-filtering.service'
 
 @Component({
   selector: 'app-sidebar',
@@ -16,7 +17,7 @@ export class SidebarComponent implements OnInit {
   
 
 
-  constructor(private category: CategoryService, private router: Router) { }
+  constructor(private category: CategoryService, private router: Router, private sharing:SharedFilteringService) { }
 
   options:  ITreeOptions = {
     actionMapping: {
@@ -34,6 +35,12 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.sharing.event.subscribe((data)=> {
+      this.category.getTreeCategories().subscribe(json=> {
+      this.nodes=json;
+    })
+
+    })
     this.category.getTreeCategories().subscribe(json=> {
       this.nodes=json;
     })

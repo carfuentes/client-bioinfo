@@ -5,6 +5,7 @@ import { TREE_ACTIONS, KEYS, IActionMapping, ITreeOptions } from 'angular-tree-c
 import { Router } from "@angular/router";
 
 import { CategoryService } from '../../services/category.service'
+import { SharedFilteringService } from '../../services/shared-filtering.service'
 
 
 @Component({
@@ -16,7 +17,7 @@ export class CategoryFormComponent implements OnInit {
   @Output() submitted = new EventEmitter<boolean>();
   categories;
 
-  constructor(private category: CategoryService, private router:Router) { }
+  constructor(private category: CategoryService, private router:Router, private sharing:SharedFilteringService) { }
 
   ngOnInit() {
     this.category.getParentCategories().subscribe(json=> {
@@ -31,6 +32,7 @@ export class CategoryFormComponent implements OnInit {
       parent: myForm.value.parent
     }
     this.category.createAcategory(myCat).subscribe(data => {
+      this.sharing.publish("");
       myForm.resetForm();
       this.submitted.emit(data.message);
     })

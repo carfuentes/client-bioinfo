@@ -13,6 +13,7 @@ import { SessionService } from './session.service'
 export class WorkflowService {
 
   BASE_URL: string = 'http://localhost:3000/api';
+  BASE_PUBLIC: string = 'http://localhost:3000';
 
   constructor(private session: SessionService, private http: Http) { }
 
@@ -27,14 +28,14 @@ export class WorkflowService {
   }
 
   getSingleWorkflow(id) {
-    return this.http.get(`${this.BASE_URL}/workflows/${id}`, this.requestOptions())
+    return this.http.get(`${this.BASE_PUBLIC}/workflows/${id}`)
     .map((response)=>  {
       return  response.json()
     })
   }
 
   getUserApprovedWorkFlows(id) {
-    return this.http.get(`${this.BASE_URL}/workflows/user/${id}/approved`, this.requestOptions())
+    return this.http.get(`${this.BASE_PUBLIC}/workflows/user/${id}/approved`, this.requestOptions())
                     .map(res => res.json())
                     .catch(this.handleError)
   }

@@ -11,7 +11,7 @@
      </div>
 
 
-  <div> <span  class="label"> Workflow </span> <span class="title" (click)="getDetails(conver.workflow._id)" >{{conver.workflow.title}}</span> </div> 
+  <div> <span *ngIf="conver.workflow" class="label"> Workflow </span> <span class="title" (click)="getDetails(conver.workflow._id)" >{{conver.workflow.title}}</span> </div> 
   <div>  <span class="label"> Date:</span> <span class="date"> {{conver.created_at | date:mediumDate}}</span></div>
   
 

@@ -4,12 +4,12 @@
 
 
 
- <div class="col s9">
+ <div class="col s9 ">
 <div *ngIf="workflow" class="card">
-  <div *ngIf="allowChecks"> 
-    <button (click)= "approveWorkflow()">Approve</button> 
-    <button (click)= "deleteWorkflow(workflow._id)">Delete</button> 
-    <button (click)= "showHide =!showHide">Send Comment</button>
+  <div *ngIf="allowChecks" class="center"> 
+    <button class="btn" (click)= "approveWorkflow()">Approve</button> 
+    <button  class="btn" (click)= "deleteWorkflow(workflow._id)">Delete</button> 
+    <button  class="btn" (click)= "showHide =!showHide">Send Comment</button>
      <div *ngIf="showHide">
   <app-comment-form [workflowId]="workflowId" [creatorId]="creator.id._id"></app-comment-form>
 </div>
@@ -39,14 +39,14 @@
 <div *ngIf="showComments">     
 <ul  materialize="collapsible" class="collapsible message-form" data-collapsible="accordion">
   <li>
-    <div class="collapsible-header header"> <span class="to-right">  {{workflow.comments.length}} Comments </span></div>
+    <div class="collapsible-header header"> <span class="to-right">  Comments </span></div>
     <div class="collapsible-body">
     <app-comment-list [newComment]= "newComment"></app-comment-list>
     </div>
 </li>
 </ul>
 
-<ul materialize="collapsible" class="collapsible message-form" data-collapsible="accordion">
+<ul *ngIf="this.session.isAuthenticated" materialize="collapsible" class="collapsible message-form" data-collapsible="accordion">
   <li>
     <div class="collapsible-header header"><span class="to-right">Leave a comment</span><i class="material-icons right">message</i></div>
     <div class="collapsible-body">
